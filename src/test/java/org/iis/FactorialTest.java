@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  4 - 24
  7 - 5040
 
- -1 - ??
+ -1 - throw an exception
  ...
 */
 class FactorialTest {
@@ -89,6 +89,6 @@ class FactorialTest {
   @Test
   void shouldComputeOfMinus1RaisesAnException() {
     // Act
-    assertThrows(RuntimeException.class, () -> factorial.compute(-1)) ;
+    assertThrows(NegativeValueException.class, () -> factorial.compute(-1)) ;
   }
 }

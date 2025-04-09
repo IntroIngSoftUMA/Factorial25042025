@@ -17,10 +17,11 @@ public class Factorial {
    *
    * @param value the non-negative integer whose factorial is to be computed
    * @return the factorial of {@code value}
+   * @throws RuntimeException if {@code value} is negative
    */
   public int compute(int value) {
     if (value < 0) {
-      throw new RuntimeException("The parameter value is negative: " +  value) ;
+      throw new NegativeValueException("The parameter value is negative: " + value);
     }
 
     int result;
