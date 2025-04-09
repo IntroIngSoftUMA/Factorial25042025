@@ -27,4 +27,17 @@ class FactorialTest {
     int expectedResult = 1;
     assertEquals(expectedResult, obtainedResult);
   }
+
+  @Test
+  void shouldFactorial1f0Return1() {
+    // Arrange
+    Factorial factorial = new Factorial();
+
+    // Act
+    int obtainedResult = factorial.compute(1);
+
+    // Assert
+    int expectedResult = 1;
+    assertEquals(expectedResult, obtainedResult);
+  }
 }
