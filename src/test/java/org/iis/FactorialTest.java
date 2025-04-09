@@ -1,5 +1,6 @@
 package org.iis;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,11 +16,16 @@ import static org.junit.jupiter.api.Assertions.*;
  ...
 */
 class FactorialTest {
+  private Factorial factorial ;
+
+  @BeforeEach
+  void setup() {
+    // Arrange
+    factorial = new Factorial() ;
+  }
+
   @Test
   void shouldFactorialOf0Return1() {
-    // Arrange
-    Factorial factorial = new Factorial();
-
     // Act
     int obtainedResult = factorial.compute(0);
 
@@ -30,9 +36,6 @@ class FactorialTest {
 
   @Test
   void shouldFactorialOf1Return1() {
-    // Arrange
-    Factorial factorial = new Factorial();
-
     // Act
     int obtainedResult = factorial.compute(1);
 
@@ -43,9 +46,6 @@ class FactorialTest {
 
   @Test
   void shouldFactorialOf2Return2() {
-    // Arrange
-    Factorial factorial = new Factorial();
-
     // Act
     int obtainedResult = factorial.compute(2);
 
@@ -56,9 +56,6 @@ class FactorialTest {
 
   @Test
   void shouldFactorialOf3Return2() {
-    // Arrange
-    Factorial factorial = new Factorial();
-
     // Act
     int obtainedResult = factorial.compute(3);
 
@@ -69,9 +66,6 @@ class FactorialTest {
 
   @Test
   void shouldFactorialOf4Return24() {
-    // Arrange
-    Factorial factorial = new Factorial();
-
     // Act
     int obtainedResult = factorial.compute(4);
 
@@ -82,9 +76,6 @@ class FactorialTest {
 
   @Test
   void shouldFactorialOf7Return5040() {
-    // Arrange
-    Factorial factorial = new Factorial();
-
     // Act
     int obtainedResult = factorial.compute(7);
 
