@@ -29,7 +29,7 @@ class FactorialTest {
   }
 
   @Test
-  void shouldFactorial1f0Return1() {
+  void shouldFactorialOf1Return1() {
     // Arrange
     Factorial factorial = new Factorial();
 
@@ -38,6 +38,58 @@ class FactorialTest {
 
     // Assert
     int expectedResult = 1;
+    assertEquals(expectedResult, obtainedResult);
+  }
+
+  @Test
+  void shouldFactorialOf2Return2() {
+    // Arrange
+    Factorial factorial = new Factorial();
+
+    // Act
+    int obtainedResult = factorial.compute(2);
+
+    // Assert
+    int expectedResult = 2;
+    assertEquals(expectedResult, obtainedResult);
+  }
+
+  @Test
+  void shouldFactorialOf3Return2() {
+    // Arrange
+    Factorial factorial = new Factorial();
+
+    // Act
+    int obtainedResult = factorial.compute(3);
+
+    // Assert
+    int expectedResult = 6;
+    assertEquals(expectedResult, obtainedResult);
+  }
+
+  @Test
+  void shouldFactorialOf4Return24() {
+    // Arrange
+    Factorial factorial = new Factorial();
+
+    // Act
+    int obtainedResult = factorial.compute(4);
+
+    // Assert
+    int expectedResult = 24;
+    assertEquals(expectedResult, obtainedResult);
+  }
+
+  @Test
+  void shouldFactorialOf7Return5040() {
+    // Arrange
+    Factorial factorial = new Factorial();
+
+    // Act
+    int obtainedResult = factorial.compute(7);
+
+    // Assert
+    int expectedResult = 5040;
     assertEquals(expectedResult, obtainedResult);
   }
 }
