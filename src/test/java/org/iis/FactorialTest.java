@@ -13,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
  3 - 6
  4 - 24
  7 - 5040
+
+ -1 - ??
  ...
 */
 class FactorialTest {
@@ -82,5 +84,11 @@ class FactorialTest {
     // Assert
     int expectedResult = 5040;
     assertEquals(expectedResult, obtainedResult);
+  }
+
+  @Test
+  void shouldComputeOfMinus1RaisesAnException() {
+    // Act
+    assertThrows(RuntimeException.class, () -> factorial.compute(-1)) ;
   }
 }

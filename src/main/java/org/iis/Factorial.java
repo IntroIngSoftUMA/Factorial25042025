@@ -19,6 +19,10 @@ public class Factorial {
    * @return the factorial of {@code value}
    */
   public int compute(int value) {
+    if (value < 0) {
+      throw new RuntimeException("The parameter value is negative: " +  value) ;
+    }
+
     int result;
     if (value == 0) {
       result = 1;
