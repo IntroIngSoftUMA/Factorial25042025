@@ -22,6 +22,8 @@ public class Factorial {
   public int compute(int value) {
     if (value < 0) {
       throw new NegativeValueException("The parameter value is negative: " + value);
+    } else if (value > 12) {
+      throw new ValueTooBigException("The parameter value is greater than 12: " + value);
     }
 
     int result;

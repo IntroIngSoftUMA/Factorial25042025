@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
  7 - 5040
 
  -1 - throw an exception
+ > 12 - throw an exception
  ...
 */
 class FactorialTest {
@@ -57,7 +58,7 @@ class FactorialTest {
   }
 
   @Test
-  void shouldFactorialOf3Return2() {
+  void shouldFactorialOf3Return6() {
     // Act
     int obtainedResult = factorial.compute(3);
 
@@ -90,5 +91,11 @@ class FactorialTest {
   void shouldComputeOfMinus1RaisesAnException() {
     // Act
     assertThrows(NegativeValueException.class, () -> factorial.compute(-1)) ;
+  }
+
+  @Test
+  void shouldComputeOf13RaiseAnException() {
+    // Act
+    assertThrows(ValueTooBigException.class, () -> factorial.compute(13)) ;
   }
 }

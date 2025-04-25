@@ -1,7 +1,7 @@
 package org.iis;
 
-public class NegativeValueException extends RuntimeException{
-    public NegativeValueException(String message) {
-        super(message) ;
-    }
+public class NegativeValueException extends RuntimeException {
+  public NegativeValueException(String message) {
+    super(message);
+  }
 }
