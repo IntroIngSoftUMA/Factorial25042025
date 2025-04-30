@@ -19,10 +19,12 @@ public class Factorial {
    * @return the factorial of {@code value}
    * @throws RuntimeException if {@code value} is negative
    */
+  private static final int MAX_SUPPORTED_INPUT = 12;
+
   public int compute(int value) {
     if (value < 0) {
       throw new NegativeValueException("The parameter value is negative: " + value);
-    } else if (value > 12) {
+    } else if (value > MAX_SUPPORTED_INPUT) {
       throw new ValueTooBigException("The parameter value is greater than 12: " + value);
     }
 
