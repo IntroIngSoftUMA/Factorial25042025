@@ -1,7 +1,11 @@
 package org.iis;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,89 +17,62 @@ import static org.junit.jupiter.api.Assertions.*;
  3 - 6
  4 - 24
  7 - 5040
+ 12 - 479001600
 
  -1 - throw an exception
  > 12 - throw an exception
  ...
 */
+@DisplayName("Test cases for class Factorial")
 class FactorialTest {
-  private Factorial factorial ;
+  private Factorial factorial;
 
   @BeforeEach
   void setup() {
     // Arrange
-    factorial = new Factorial() ;
+    factorial = new Factorial();
   }
 
-  @Test
-  void shouldFactorialOf0Return1() {
-    // Act
-    int obtainedResult = factorial.compute(0);
+  @Nested
+  @DisplayName("The compute() method works properly in these cases:")
+  class TestCasesForCorrectFactorials {
 
-    // Assert
-    int expectedResult = 1;
-    assertEquals(expectedResult, obtainedResult);
+    @ParameterizedTest(name = "Factorial of {0} is {1}")
+    @CsvSource({
+            "0, 1",
+            "1, 1",
+            "2, 2",
+            "3, 6",
+            "4, 24",
+            "7, 5040",
+            "12, 479001600"
+    })
+    @DisplayName("Cases: ")
+    void shouldReturnCorrectFactorial(int input, int expected) {
+      // Act
+      int obtainedValue = factorial.compute(input) ;
+
+      // Assert
+      assertEquals(expected, obtainedValue);
+    }
   }
 
-  @Test
-  void shouldFactorialOf1Return1() {
-    // Act
-    int obtainedResult = factorial.compute(1);
+  @Nested
+  @DisplayName("An exception is thrown when: ")
+  class TestCasesForErrorDetection {
 
-    // Assert
-    int expectedResult = 1;
-    assertEquals(expectedResult, obtainedResult);
-  }
+    @Test
+    @DisplayName("The value is negative")
+    void shouldComputeOfMinus1RaisesAnException() {
+      // Act
+      assertThrows(NegativeValueException.class, () -> factorial.compute(-1));
+    }
 
-  @Test
-  void shouldFactorialOf2Return2() {
-    // Act
-    int obtainedResult = factorial.compute(2);
-
-    // Assert
-    int expectedResult = 2;
-    assertEquals(expectedResult, obtainedResult);
-  }
-
-  @Test
-  void shouldFactorialOf3Return6() {
-    // Act
-    int obtainedResult = factorial.compute(3);
-
-    // Assert
-    int expectedResult = 6;
-    assertEquals(expectedResult, obtainedResult);
-  }
-
-  @Test
-  void shouldFactorialOf4Return24() {
-    // Act
-    int obtainedResult = factorial.compute(4);
-
-    // Assert
-    int expectedResult = 24;
-    assertEquals(expectedResult, obtainedResult);
-  }
-
-  @Test
-  void shouldFactorialOf7Return5040() {
-    // Act
-    int obtainedResult = factorial.compute(7);
-
-    // Assert
-    int expectedResult = 5040;
-    assertEquals(expectedResult, obtainedResult);
-  }
-
-  @Test
-  void shouldComputeOfMinus1RaisesAnException() {
-    // Act
-    assertThrows(NegativeValueException.class, () -> factorial.compute(-1)) ;
-  }
-
-  @Test
-  void shouldComputeOf13RaiseAnException() {
-    // Act
-    assertThrows(ValueTooBigException.class, () -> factorial.compute(13)) ;
+    @Test
+    @DisplayName("The value is greater than 12")
+    void shouldThrowExceptionWhenInputIsTooBig() {
+      // Act
+      assertThrows(ValueTooBigException.class, () -> factorial.compute(13));
+    }
   }
 }
