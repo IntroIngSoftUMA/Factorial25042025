@@ -1,15 +1,15 @@
 package org.iis;
 
 /**
- * The {@code Factorial} class provides a method to compute
- * the factorial of a non-negative integer using recursion.
+ * The {@code Factorial} class provides a method to compute the factorial of a non-negative integer
+ * using recursion.
  *
  * <p>The factorial of a number {@code n} is defined as:
- * <ul>
- *   <li>{@code 0! = 1}</li>
- *   <li>{@code n! = n * (n - 1)!} for {@code n > 0}</li>
- * </ul>
  *
+ * <ul>
+ *   <li>{@code 0! = 1}
+ *   <li>{@code n! = n * (n - 1)!} for {@code n > 0}
+ * </ul>
  */
 public class Factorial {
   /**
@@ -30,7 +30,10 @@ public class Factorial {
     if (value == 0) {
       result = 1;
     } else {
-      result = value * compute(value - 1);
+      result = 1;
+      for (int i = 2; i <= value; i++) {
+        result *= i;
+      }
     }
     return result;
   }
